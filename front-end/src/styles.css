@@ -1,0 +1,48 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html {
+    background: #f0f0f0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin-right: auto;
+    margin-left:  auto;
+    max-width: 1024px;
+    padding-right: 10px;
+    padding-left:  10px;
+  }
+
+.mat-card {
+    margin: 10px 0;
+}
+
+.mat-paginator-container {
+    background: #f0f0f0;
+}
+
+.mat-menu-panel {
+    overflow: unset !important;
+    min-width: 280px !important;
+}
+
+.mat-option {
+    height: 30px !important;
+}
+
+.mat-list .mat-list-item .mat-form-field-wrapper{
+    padding-left: 5px;
+    padding-right: 0px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.float-right {
+    float: right;
+}

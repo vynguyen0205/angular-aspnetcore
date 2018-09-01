@@ -1,0 +1,35 @@
+<mat-card *ngIf="contact" (click)="selectContact(contact.contactId)" [ngClass]="{'selected-contact': isSelected}">
+  <mat-card-title>{{contact.firstName}} {{contact.lastName}}
+    <span>{{contact.company}}</span>
+    <button mat-icon-button color="primary" [matMenuTriggerFor]="menu" class="float-right" (mouseenter)="getTags($event)" (click)="$event.stopPropagation();">
+      <mat-icon>book</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" xPosition="before">
+      <ng-template matMenuContent>
+        <mat-list (click)="$event.stopPropagation()">
+          <mat-list-item *ngFor="let tag of tags" class="compact">
+            <mat-checkbox color="primary" [(ngModel)]="tag.isSelected" (change)="clickTag(tag)">
+              <span *ngIf="!tag.editing">{{tag.tagName}}</span>
+              <mat-form-field *ngIf="tag.editing">
+                <input matInput [(ngModel)]="tag.tagName" (keyup.enter)="updateTag(tag)">
+              </mat-form-field>
+            </mat-checkbox>
+            <mat-icon *ngIf="!tag.editing" (click)="tag.editing = !tag.editing">mode_edit</mat-icon>
+            <mat-icon *ngIf="tag.editing" color="primary" (click)="updateTag(tag)">check_circle</mat-icon>
+            <mat-icon (click)="confirmDelete(tag)">delete</mat-icon>
+          </mat-list-item>
+          <mat-list-item class="mt20">
+            <mat-form-field>
+              <input matInput placeholder="Add tag and press Enter" [(ngModel)]="customTagName" (keyup.enter)="addCustomTag()">
+            </mat-form-field>
+          </mat-list-item>
+        </mat-list>
+      </ng-template>
+    </mat-menu>
+  </mat-card-title>
+  <mat-card-content>
+    <mat-chip-list>
+      <mat-chip *ngFor="let tag of contact.tags">{{tag.tagName}}</mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,28 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Address Book</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script type="text/javascript">
+        window['endpoint'] = 'http://localhost:1234/';
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
+                console.log('Service Worker registered.');
+            }).catch(function (err) {
+                console.log('Service Worker registration failed: ', err);
+            });
+        }</script>
+    <link href="styles.0c9f9fcd8ad5b34b6ae9.bundle.css" rel="stylesheet" />
+</head>
+<body>
+    <app-root></app-root>
+    <script type="text/javascript" src="inline.318b50c57b4eba3d437b.bundle.js"></script>
+    <script type="text/javascript" src="polyfills.7ec6a00f77052b9b050a.bundle.js"></script>
+    <script type="text/javascript" src="main.627005a396ab3419ff57.bundle.js"></script>
+</body>
+</html>

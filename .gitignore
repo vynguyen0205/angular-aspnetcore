@@ -1,0 +1,12 @@
+back-end/.vs/
+back-end/AddressBook.Data/bin/
+back-end/AddressBook.Data/obj/
+back-end/AddressBook.Repository/bin/
+back-end/AddressBook.Repository/obj/
+back-end/AddressBook.Service/bin/
+back-end/AddressBook.Service/obj/
+back-end/AddressBook.ServiceImplementation/bin/
+back-end/AddressBook.ServiceImplementation/obj/
+back-end/AddressBook.Web/bin/
+back-end/AddressBook.Web/obj/
+back-end/AddressBook.Web/Properties/PublishProfiles/addressbook-stg - Web Deploy.pubxml.user

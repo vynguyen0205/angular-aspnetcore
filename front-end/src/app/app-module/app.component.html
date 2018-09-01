@@ -1,0 +1,61 @@
+<ng-progress></ng-progress>
+<div class="container">
+  <!--Begin head row-->
+  <div class="row">
+    <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex fxLayoutGap="10px">
+      <!--Begin search box-->
+      <div fxFlex="70">
+        <mat-form-field class="field-full-width">
+          <input matInput placeholder="Search by Name, Company, or #Tag" [matAutocomplete]="auto" [(ngModel)]="searchTerm" (keyup)="searchTerm$.next($event.target.value)">
+          <button mat-button *ngIf="searchTerm" matSuffix mat-icon-button aria-label="Clear" (click)="searchTerm = ''; searchTerm$.next($event.target.value)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onSelectAutoComplete($event)" [displayWith]="displayAutoComplete" >
+          <mat-option *ngFor="let tag of tags" [value]="tag">{{tag.tagName}}</mat-option>
+        </mat-autocomplete>
+      </div>
+      <!--End search box-->
+      <!--Begin notification section-->
+      <div fxFlex="30">
+        <mat-menu #appMenu="matMenu" [overlapTrigger]="false" xPosition="before">
+          <button mat-menu-item class="compact" *ngFor="let notification of notifications">
+            <mat-icon>done_all</mat-icon>
+            <span>{{notification}}</span>
+          </button>
+          <button mat-menu-item class="compact" *ngIf="notifications.length == 0">
+            <mat-icon>notifications_off</mat-icon>
+            <span>No notifications yet.</span>
+          </button>
+        </mat-menu>
+        <button class="float-right" mat-mini-fab [matMenuTriggerFor]="appMenu" [color]="notifications.length > 0 ? 'primary' : 'basic'">
+          <mat-icon>{{notifications.length == 0 ? 'notifications_none' : 'notifications_active'}}</mat-icon>
+        </button>
+      </div>
+      <!--End notification section-->
+    </div>
+  </div>
+  <!--End head row-->
+  <!--Begin content row-->
+  <div class="row">
+    <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex fxLayoutGap="10px" *ngIf="contactList">
+      <!--Begin contact card list-->
+      <div fxFlex="70">
+        <div *ngFor="let contact of contactList.list">
+          <app-contact-item [contact]="contact" [isSelected]="contact.contactId == selectedContactId" (onSelectContact)="onSelectContact($event)"
+            (onTagAdded)="onTagAdded($event)" (onTagUpdated)="onTagUpdated($event)" (onTagDeleted)="onTagDeleted($event)"></app-contact-item>
+        </div>
+        <mat-paginator [length]="contactList.totalItems" [pageSize]="paginationOptions.itemsPerPage" [pageSizeOptions]="paginationOptions.pageSizeOptions"
+          (page)="search(searchTerm, searchTagId, $event)">
+        </mat-paginator>
+      </div>
+      <!--End contact card list-->
+      <!--Begin contact detail-->
+      <div fxFlex="30">
+        <router-outlet></router-outlet>
+      </div>
+      <!--End contact detail-->
+    </div>
+  </div>
+  <!--End content row-->
+</div>

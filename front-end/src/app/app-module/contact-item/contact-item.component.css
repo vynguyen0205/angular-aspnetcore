@@ -1,0 +1,22 @@
+.mat-card.selected-contact {
+    background-color: #e6e6e6;
+}
+
+.mat-list .mat-list-item.compact {
+    height: 30px !important;
+    cursor: pointer;
+    width: 100%;
+}
+
+.mat-list .mat-list-item.compact .mat-checkbox{
+    width: 80%;
+}
+
+.mat-list .mat-list-item.compact .material-icons{
+    font-size: 20px;
+}
+
+.mat-card-title span {
+    font-size: 14px;
+    color: gray;
+}
