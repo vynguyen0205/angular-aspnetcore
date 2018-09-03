@@ -9,4 +9,4 @@ This is project is to maintain an address book. User can perform the following a
 - Add new tag and edit tags on the fly
 
 # Demo
-Check out the link at for more information.
+Check out the link [https://angular-demo-app-0205.azurewebsites.net](https://angular-demo-app-0205.azurewebsites.net) at for more information.
